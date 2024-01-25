@@ -9,7 +9,7 @@ const player = new Player({ posistion: { x: 400, y: 400 }, width: 100 });
 
 // list of interactable platforms
 const interactablePlatforms_bottom = [
-    new Object({ posistion: { x: 300, y: 400 }, width: 50, height: 20, connectiongroup: 1 }),
+    new Object({ posistion: { x: 300, y: 400 }, width: 75, height: 20, connectiongroup: 1 }),
     new Object({ posistion: { x: 450, y: 400 }, width: 50, height: 20, connectiongroup: 1 }),
     new Object({ posistion: { x: 700, y: 400 }, width: 50, height: 20, connectiongroup: 1 }),
     new Object({ posistion: { x: 850, y: 400 }, width: 50, height: 20, connectiongroup: 1 }),
@@ -73,10 +73,14 @@ const keybinds = {
     e: false,
 }
 
+let jumphold = 0
 // key action function
 function checkkeydown() {
     if (keybinds.w) {
+        if(jumphold < 10){
         player.posistion.y -= player.jumpvalue;
+        jumphold += 1;
+        }
     }
     if (keybinds.a) {
         player.posistion.x -= player.speed;
@@ -99,15 +103,15 @@ function draw() {
 // animation function
 function repeaties() {
     requestAnimationFrame(repeaties);
-    for (i = interactablePlatforms_bottom.length; i > 0; i--) {
-        // if (collisionCheck(player, interactablePlatforms_bottom[i - 1])) {
-        // }
-    }
+
     canvascollision(player, canvas);
-    ctx.fillStyle = "white";
+
+    ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     checkkeydown();
     draw();
+
     thecollision(player, interactablePlatforms_bottom[0]);
 }
 

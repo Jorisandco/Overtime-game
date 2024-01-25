@@ -22,6 +22,7 @@ function canvascollision(player, canvas) {
     }
     if (player.posistion.y + player.width > canvas.height) {
         player.isonground = true;
+        jumphold = 0;
     }
     else if (player.posistion.y + player.width < canvas.height) {
         player.isonground = false;
@@ -45,10 +46,8 @@ function thecollision() {
             if (checkCollision(player, interactablePlatforms_bottom[i - 1])) {
                 player.posistion.y = interactablePlatforms_bottom[i - 1].posistion.y + interactablePlatforms_bottom[i - 1].height;
                 player.isonground = true;
+                jumphold = 0;
             }
-            else if (!checkCollision(player, interactablePlatforms_bottom[i - 1])) {
-                
-            };
         }
     }
 }
