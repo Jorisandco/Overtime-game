@@ -94,6 +94,7 @@ function checkkeydown() {
 }
 // draw function
 function draw() {
+    player.update();
     player.draw();
     for (i = interactablePlatforms_bottom.length; i > 0; i--) {
         interactablePlatforms_bottom[i - 1].draw();

@@ -2,9 +2,9 @@
 
 // player class
 class Player {
-    constructor({posistion, width, connectiongroup}) {        
+    constructor({ posistion, width, connectiongroup }) {
         this.posistion = posistion;
-        
+
         this.speed = 5;
         this.health = 100;
         this.attack = 10;
@@ -22,26 +22,27 @@ class Player {
     draw() {
         ctx.fillStyle = "red";
         ctx.fillRect(this.posistion.x, this.posistion.y, this.width, this.height);
-        if(!this.isonground){
+    }
+    update() {
+        if (!this.isonground) {
             player.posistion.y += this.gravity;
-            if(this.gravity < 25){
+            if (this.gravity < 25) {
                 this.gravity += 0.5;
             }
         }
-        if(this.isonground){
+        if (this.isonground) {
             this.gravity = 1;
+            this.speed = 8.5;
         }
-    }
-
-    update() {
-        draw();
-
+        else if (!this.isonground) {
+            this.speed = 10;
+        }
     }
 }
 
 // object and actor classes 
 class Object {
-    constructor({posistion, width, height, connectiongroup}) {        
+    constructor({ posistion, width, height, connectiongroup }) {
         this.posistion = posistion;
         this.width = width;
         this.height = height;
