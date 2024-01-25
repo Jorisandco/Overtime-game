@@ -1,11 +1,13 @@
+// variables
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 canvas.width = 1044;
 canvas.height = 600;
 
-
+// player variable
 const player = new Player({ posistion: { x: 400, y: 400 }, width: 100 });
 
+// list of interactable platforms
 const interactablePlatforms_bottom = [
     new Object({ posistion: { x: 300, y: 400 }, width: 50, height: 20, connectiongroup: 1 }),
     new Object({ posistion: { x: 450, y: 400 }, width: 50, height: 20, connectiongroup: 1 }),
@@ -19,6 +21,7 @@ const interactablePlatforms_bottom = [
     new Object({ posistion: { x: 1000, y: 200 }, width: 50, height: 20, connectiongroup: 2 }),
 ];
 
+// control keys
 addEventListener("keydown", () => {
     switch (event.key) {
         case "w":
@@ -47,6 +50,7 @@ addEventListener("keydown", () => {
     }
 });
 
+// keyup
 addEventListener("keyup", () => {
     switch (event.key) {
         case "w":
@@ -61,6 +65,7 @@ addEventListener("keyup", () => {
     }
 });
 
+// keychecks
 const keybinds = {
     w: false,
     a: false,
@@ -68,6 +73,7 @@ const keybinds = {
     e: false,
 }
 
+// key action function
 function checkkeydown() {
     if (keybinds.w) {
         player.posistion.y -= player.jumpvalue;
@@ -82,7 +88,7 @@ function checkkeydown() {
         alert("nothing yet");
     }
 }
-
+// draw function
 function draw() {
     player.draw();
     for (i = interactablePlatforms_bottom.length; i > 0; i--) {
@@ -90,6 +96,7 @@ function draw() {
     }
 }
 
+// animation function
 function repeaties() {
     requestAnimationFrame(repeaties);
     for (i = interactablePlatforms_bottom.length; i > 0; i--) {
@@ -105,5 +112,3 @@ function repeaties() {
 }
 
 repeaties();
-
-

@@ -1,5 +1,6 @@
 // classes
 
+// player class
 class Player {
     constructor({posistion, width, connectiongroup}) {        
         this.posistion = posistion;
@@ -38,6 +39,7 @@ class Player {
     }
 }
 
+// object and actor classes 
 class Object {
     constructor({posistion, width, height, connectiongroup}) {        
         this.posistion = posistion;
